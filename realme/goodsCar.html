@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="./img/title.png" rel="shortcut icon">
+  <title>购物车-买</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"
+    content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/goodsCar.css">
+  <link rel="stylesheet" href="./font/iconfont.css">
+</head>
+
+<body>
+
+  <header></header>
+
+  <div class="min"></div>
+  <div class="content">
+    <div class="crumbs">
+      购物车
+    </div>
+    <div class="empty-cart" style="display: none;">
+      <i class="iconfont icon-gouwuche2"></i>
+      <p>购物车内暂时没有商品哦</p>
+      <a href="http://localhost/realme/goodList.html" class="shoping">去购物</a>
+    </div>
+    <div class="car">
+      <div class="car-header">
+        <div class="header-left">
+          <input type="checkbox" id="all">
+          <span class="all">全选</span>
+        </div>
+        <div class="header-right">
+          <div class="cart-price">单价</div>
+          <div class="cart-count">数量</div>
+          <div class="cart-amount">小计</div>
+        </div>
+      </div>
+      <ul class="car-ul" id="carUl">
+        <!-- <li class="car-li">
+          <i class="delGoods">×</i>
+          <div class="cart-header-left">
+            <input type="checkbox" class="radio">
+            <img src="./img/cd2.png" alt="">
+            <h4 class="goodsName">真我静音无线鼠标</h4>
+          </div>
+          <div class="cart-header-right">
+            <div class="cart-price">￥69</div>
+            <div class="cart-count">
+              <button id="jian">-</button>
+              <span class="goodsPirce">1</span>
+              <button id="jia">+</button>
+            </div>
+            <div class="cart-amount">￥69</div>
+          </div>
+        </li> -->
+      </ul>
+    </div>
+    <div class="car-footer">
+      <div class="footer-left">
+        <a href="http://localhost/realme/goodList.html">继续购物 ></a>
+      </div>
+      <div class="footer-right">
+        <p class="cart-summary-count">
+          <span>商品总数</span>
+          <span id="goodsAmount">0</span>
+        </p>
+        <p class="cart-summary-count1">
+          <span>总计：</span>
+          <span id="goodsCountPirce">￥0</span>
+        </p>
+        <button class="cart-summary-submit">
+          立即下单
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer></footer>
+
+</body>
+
+
+
+</html>
+<script>
+  $('header').load('./header.html')
+  $('footer').load('./footer.html')
+</script>

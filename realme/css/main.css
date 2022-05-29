@@ -1,0 +1,191 @@
+/* 轮播图 */
+.wrap {
+    position: relative;
+    width: 100%;
+    height: 650px;
+}
+.wrap .slide_list {
+    position: relative;
+    width: 100%;
+    height: 650px;
+}
+.slide_list li {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.wrap .slide_list .item1 img{
+    width: 100%;
+    height: 650px;
+
+}
+.item1.active {
+    z-index: 100;
+    opacity: 1;
+}
+/* 两个按钮 */
+.wrap button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    z-index: 300;
+
+}
+.wrap button:hover {
+    background-color: rgba(0, 0, 0, .2);
+}
+.wrap .prev {
+    left: 10px;
+    background: url(../images/prev.png) no-repeat 14px 18px;
+}
+.wrap .next {
+    right: 10px;
+    background: url(../images/next.png) no-repeat 14px 18px;
+}
+
+
+/* 小圆点 */
+ .wrap .pointList {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 400;
+}
+.slide_list{
+    text-align: center;
+}
+ .wrap .pointList li {
+    float: left;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #f0f0f0;
+    /* border-radius: 100%; */
+    margin: 0 10px;
+    text-align: center;
+    /* background-color: black; */
+ } 
+.point.active {
+    background-color: black;
+}
+
+/* 主体 */
+.main>h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: black;
+    padding: 30px 0;
+}
+/* 爆款折扣专区 */
+.main .slide_show1 {
+    overflow: hidden;
+    position: relative;
+    width: 1200px;
+    height: 380px;
+}
+.main .slide_show1 .btn {
+    position: absolute;
+    top: 50%;
+    width: 1340px;
+    height: 48px;
+    background-color: #ea0000;
+    z-index: 100;
+}
+.main .slide_show1 .slide_group {
+    position: absolute;
+    width: 400%;
+}
+/* 轮播按钮 */
+.main .slide_show1 button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    
+    border-radius: 50%;
+    z-index: 1000;
+}
+.main .slide_show1 button:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+/* 左按钮 */
+.main .slide_show1 .goPre {
+    left: 0;
+    background: url(../images/sPre.png) no-repeat 5px 10px;
+}
+/* 右按钮 */
+.main .slide_show1 .goNext {
+    right: 0;
+    background: url(../images/sNext.png) no-repeat 10px 10px;
+}
+.main .slide_group {
+    cursor: pointer;
+}
+.main .slide_group .first li {
+    float: left;
+    width: 288px;
+    height: 380px;
+    background-color: #fff;
+    padding-top: 25px;
+    margin-right: 13px;
+    transition: all .3s;
+    
+}
+.main .slide_group .first li:hover {
+    transform: translate3d(0,-2px,0)
+}
+.main .slide_group .first li:nth-child(4n) {
+    margin: 0;
+}
+
+/* .main .slide_group .first li .count_down {
+    text-align: center;
+}
+
+.main .slide_group .first li .count_down span:nth-child(odd) {
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-color: #ea0000;
+    color: #ffffff;
+} */
+.main .slide_group .first li .count_down span:nth-child(even)::after {
+    content: ':';
+    display: inline-block;
+    height: 19px;
+    width: 5px;
+}
+/* 图片 */
+.main .slide_group .first li img {
+    display: block;
+    width: 160px;
+    height: auto;
+    margin: 25px auto;
+}
+.main .slide_group .first li h2 {
+    text-align: center;
+    font-size: 16px;
+}
+.main .slide_group .first li p {
+    text-align: center;
+    font-size: 14px;
+    margin: 10px 0;
+}
+.main .slide_group .first .price {
+    text-align: center;
+}
+.main .slide_group .first .price .promotion_p {
+    font-size: 18px;
+    
+    color: #ea0000;
+}
+.main .slide_group .first .price .original_p {
+    font-size: 16px;
+    text-decoration: line-through;
+    
+}

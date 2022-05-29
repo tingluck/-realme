@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box
+}
+
+
+
+a {
+    color: #7f7f7f
+}
+
+header {
+    width: 100%;
+    height: 78px;
+    position: fixed;
+    z-index: 777;
+    color: #7f7f7f
+}
+
+header .header-content .header-left a:hover,
+header .header-content .header-right span:hover {
+    color: #bebebe
+}
+
+header .header-content {
+    width: 894px;
+    height: 78px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding-top: 30px
+}
+
+header .header-content .header-left {
+    width: 75px;
+    height: 19px
+}
+
+header .header-content .header-right {
+    width: 160px;
+    height: 19px;
+    display: flex;
+    justify-content: space-between;
+    position: relative
+}
+
+header .header-content .header-right span i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+    background-color: #000
+}
+
+header .header-content .header-right .lang {
+    width: 110px;
+    height: 150px;
+    justify-content: space-between;
+    flex-direction: column;
+    position: absolute;
+    z-index: 99999;
+    top: 25px;
+    right: 0;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 5px;
+    border: 1px solid #bebebe;
+    display: none
+}
+
+header .header-content .header-right .lang li {
+    height: 33.33%
+}
+
+header .header-content .header-right .lang li a {
+    width: 100%;
+    height: 100%;
+    display: inline-block
+}
+
+header .header-content .header-right .lang li a:hover {
+    background-color: #bebebe
+}
+
+.min {
+    width: 100%;
+    height: 78px
+}
+
+.body {
+    height: 810px;
+    width: 100%;
+    position: relative
+}
+
+.body h2 {
+    text-align: center;
+    padding-top: 45px;
+    margin-bottom: 50px;
+    font-size: 50px;
+    font-weight: 500;
+    font-family: OPPOSans-Regular, "PingFang SC", "Helvetica Neue", Helvetica, "Microsoft YaHei", Arial, sans-serif
+}
+
+.body .form {
+    width: 380px;
+    height: 540px;
+    position: absolute;
+    top: 152px;
+    left: 990px;
+    padding: 40px;
+    border-radius: 5px;
+    background-color: #fff;
+    text-align: center
+}
+
+.body .form h1 {
+    height: 77px;
+    padding: 10px 0 30px;
+    font-size: 26px;
+    font-weight: 500
+}
+
+.body .form .btns {
+    height: 34px;
+    width: 100%;
+    margin-bottom: 20px
+}
+
+.body .form .btns a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    display: flex;
+    justify-content: space-between
+}
+
+.body .form .btns a .btn {
+    width: 150px;
+    margin: 0 10px
+}
+
+.body .form .btns a .btn span {
+    display: inline-block
+}
+
+.body .form .btns a .btn .text {
+    height: 34px;
+    position: relative
+}
+
+.body .form .btns a .btn .text .bottom {
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: #ffc915;
+    top: 30px;
+    left: 0
+}
+
+.body .form .inp-phone {
+    width: 100%;
+    height: 55px;
+    padding-bottom: 10px
+}
+
+.body .form .inp-phone input {
+    display: inline-block;
+    width: 300px;
+    height: 45px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    outline: 0;
+    background-color: #f7f7f7
+}
+
+.body .form #pwd {
+    position: relative
+}
+
+.body .form #pwd input {
+    width: 300px
+}
+
+.body .form #pwd .pwd-img {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    /* background: url(../img/pwd.png) no-repeat; */
+    background-size: 100% 100%
+}
+
+.body .form .change {
+    height: 100px;
+    width: 100%;
+    position: relative
+}
+
+.body .form .change input,
+.body .form .change span {
+    display: inline-block;
+    height: 45px;
+    background-color: #f7f7f7;
+    top: 0
+}
+
+.body .form .change input {
+    position: absolute;
+    left: 0;
+    width: 200px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    outline: 0
+}
+
+.body .form .change span {
+    position: absolute;
+    right: 0;
+    width: 90px;
+    border-radius: 5px;
+    margin-left: 5px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 12px;
+    color: #7f7f7f
+}
+
+.body .form .change p {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 48px;
+    height: 16px;
+    font-size: 12px
+}
+
+.body .form .change p:hover {
+    color: #bebebe
+}
+
+.body .form .error {
+    position: absolute;
+    top: 270px;
+    width: 300px;
+    height: 36px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 36px;
+    margin-top: 20px;
+    color: red;
+    display: none
+}
+
+.body .form button {
+    width: 300px;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #e9e9e9;
+    color: #9b9b9b
+}
+
+.body .form .link {
+    height: 25px;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px
+}
+
+.body .form .link .hui:hover {
+    color: #bebebe
+}
+
+.body .form .link .yellow {
+    color: #ffc915
+}
+
+.body .form .link .yellow:hover {
+    color: #FFE48A
+}
+
+.body .form .form-bottom {
+    width: 300px;
+    height: 90px;
+    padding-top: 28px
+}
+
+.body .form .form-bottom .cont {
+    width: 100%;
+    height: 14px;
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    position: relative
+}
+
+.body .form .form-bottom .cont .zz {
+    position: absolute;
+    top: 0;
+    width: 114px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 14px;
+    left: 95px;
+    color: #7f7f7f
+}
+
+.body .form .form-bottom .cont .xx {
+    position: absolute;
+    top: 6.5px;
+    display: inline-block;
+    width: 95px;
+    height: 1px;
+    background-color: #7f7f7f
+}
+
+.body .form .form-bottom .cont .left {
+    left: 0
+}
+
+.body .form .form-bottom .cont .right {
+    right: 0
+}
+
+.body .form .form-bottom .cont .icon {
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    left: 136px;
+    top: 22px
+}
+
+.body .form .form-bottom .cont .icon i {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    font-size: 20px;
+    color: #3BF
+}
+
+footer {
+    width: 100%;
+    height: 85px;
+    padding: 20px;
+    color: #7f7f7f;
+    text-align: center
+}
+
+footer .foot-p1 {
+    height: 19px;
+    font-size: 14px;
+    margin-bottom: 10px
+}
+
+footer .foot-p2 {
+    height: 16px;
+    font-size: 12px
+}
+
+.over {
+    width: 305px;
+    height: 34px;
+    background-color: purple;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+body {
+    background: url(../upload/slide-3.jpg);
+    background-size: 100% 100%;
+}
