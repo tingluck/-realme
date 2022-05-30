@@ -139,8 +139,11 @@ a {
     padding: 30px 60px;
     display: flex;
     justify-content: space-between;
-    line-height: 80px;
+    /* line-height: 80px; */
     position: relative
+}
+.cart-price,.cart-amount{
+ line-height: 80px;
 }
 
 .content .car .car-ul .car-li:hover .delGoods {
@@ -151,12 +154,12 @@ a {
     width: 24px;
     height: 24px;
     position: absolute;
-    top: 29px;
+    top: 55px;
     right: 25px;
     border: none;
     background-color: #fff;
     font-size: 20px;
-    display: none
+    /* display: none */
 }
 
 .content .car .car-ul .car-li .delGoods:hover {
@@ -164,7 +167,7 @@ a {
 }
 
 .content .car .car-ul .car-li .cart-header-left {
-    width: 580px;
+    width: 780px;
     height: 80px;
     display: flex;
     justify-content: left
@@ -182,7 +185,9 @@ a {
     height: 80px;
     margin: 0 30px 0 50px
 }
-
+.content .car .car-ul .car-li .cart-header-left h4{
+    width: 500px;
+}
 .content .car .car-ul .car-li .cart-header-right {
     width: 300px;
     height: 80px;

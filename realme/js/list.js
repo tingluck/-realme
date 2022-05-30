@@ -2,19 +2,62 @@ class Index {
     constructor() {
         this.getDate();
         this.bindEve();
+
     }
     // 加入购物车
     bindEve() {
-        this.$('.sk_bd ul').addEventListener('click', this.addCart.bind(this))
+        this.$('.sk_bd ul').addEventListener('click', this.checkLogin.bind(this))
     }
-    addCart(eve) {
+    checkLogin(eve) {
         // 事件委托
         // console.log(this);
-        if(eve.target.nodeName!='A'||eve.target.className!='sk_goods_buy')return;
+        if (eve.target.nodeName != 'A' || eve.target.className != 'sk_goods_buy') return;
         // console.log(eve.target);
-        let token=localStorage.getItem('token');
-        if(!token)location.assign('./login.html?ReturnUrl=./list.html')
+        let token = localStorage.getItem('token');
+        if (!token) location.assign('./login.html?ReturnUrl=./list.html');
+        // 如果客户已经登录，则加入购物车
+        let goodsId = eve.target.parentNode.dataset.id;
+        let userId = localStorage.getItem('user_id');
+        // console.log(goodsId);
+        this.addCart(goodsId, userId);
+    }
+    addCart(gId, uId) {
+        // console.log(gId,uId);
+        // 给添加购物车接口发送接口,常量大写（axios配置默认值，全局）
+        const AUTH_TOKEN = localStorage.getItem('token');
+        // 属性要【】
+        axios.defaults.headers.common['authorization'] = AUTH_TOKEN;
+        axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+        let param = `id=${uId}&goodsId=${gId}`
+        axios.post('http://localhost:8888/cart/add', param).then(({
+            data,
+            status
+        }) => {
+            // console.log(data,status);
+            // 判断添加购物车是否成功
+            if (status == 200 && data.code == 1) {
+                layer.open({
+                    title: '商品添加成功',
+                    content: '购物车页面，去吗？',
+                    btn: ['留下', '可以'],
+                    btn2: function (index, layero) {
+                        // console.log('去');
+                        location.assign('./goodsCar.html')
+                    }
+                })
+            } else if (status == 200 && data.code == 401) {
+                localStorage.removeItem('token'),
+                    localStorage.removeItem('user_id');
+                location.assign('./login.html?ReturnUrl=./list.html')
+            } else {
+                layer.open({
+                    title: '失败',
+                    content: '搞啥尼',
+                    time: 3000
+                })
+            }
 
+        })
     }
     // 获取商品
     async getDate() {
@@ -31,7 +74,7 @@ class Index {
         data.list.forEach(good => {
             // console.log(good);
             // 整合数据
-            html += `<li class="sk_goods" class="${good.goods_id}">
+            html += `<li class="sk_goods" data-id="${good.goods_id}">
             <a href="#none">
                 <img src="${good.img_big_logo}" alt="">
             </a>
