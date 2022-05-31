@@ -2,25 +2,74 @@ class Index {
     constructor() {
         this.getDate();
         this.bindEve();
+        // 显示购物车
+        // this.click();
 
     }
+    // 显示
+    click = () => {
+        // console.log(111);
+
+        let Id = localStorage.getItem('gId');
+        //    console.log(gId);
+        axios.get(' http://localhost:8888/goods/item/' +
+            `${Id}`).then(({
+            data
+        }) => {
+            // console.log(data);
+            let html = '';
+            html += `<li class="car-li">
+            <div class="cart-header-left">
+              <img src="${data.info.img_big_logo}" alt="">
+              <span class="goodsName">${data.info.title}</span>
+              <span class="cart-amount">${data.info.current_price}</span>
+            </div>
+          </li>`;
+            console.log(html);
+            this.$('.car-ul').innerHTML += html;
+            this.$('.admin').onmouseover = () => {
+                this.$('.car-ul').style.display = 'block';
+            }
+            this.$('.car-ul').onmouseout = () => {
+                this.$('.car-ul').style.display = 'none';
+            }
+        })
+
+    }
+    // 消失
+
     // 加入购物车
     bindEve() {
         this.$('.sk_bd ul').addEventListener('click', this.checkLogin.bind(this))
     }
+
     checkLogin(eve) {
         // 事件委托
         // console.log(this);
-        if (eve.target.nodeName != 'A' || eve.target.className != 'sk_goods_buy') return;
+        if (eve.target.className == 'img' && eve.target.nodeName == "IMG") {
+            // location.assign('./fang.html');
+            // 获取商品id
+            // console.log(eve.target.parentNode.parentNode.dataset.id);
+            let cId = eve.target.parentNode.parentNode.dataset.id
+            // console.log(cId);
+            sessionStorage.setItem('cpid', cId);
+            location.assign('./fang.html');
+        } else if (eve.target.nodeName != 'A' || eve.target.className != 'sk_goods_buy') {
+            return
+        };
         // console.log(eve.target);
         let token = localStorage.getItem('token');
         if (!token) location.assign('./login.html?ReturnUrl=./list.html');
         // 如果客户已经登录，则加入购物车
         let goodsId = eve.target.parentNode.dataset.id;
+        localStorage.setItem('gId', goodsId)
         let userId = localStorage.getItem('user_id');
         // console.log(goodsId);
         this.addCart(goodsId, userId);
+        this.click();
+        // console.log(eve.target);
     }
+
     addCart(gId, uId) {
         // console.log(gId,uId);
         // 给添加购物车接口发送接口,常量大写（axios配置默认值，全局）
@@ -59,6 +108,12 @@ class Index {
 
         })
     }
+    // 显示购物车内容
+    // xianShi(eve){
+
+
+
+    // }
     // 获取商品
     async getDate() {
         // console.log(111);
@@ -75,8 +130,8 @@ class Index {
             // console.log(good);
             // 整合数据
             html += `<li class="sk_goods" data-id="${good.goods_id}">
-            <a href="#none">
-                <img src="${good.img_big_logo}" alt="">
+            <a href="#none" >
+                <img src="${good.img_big_logo}" class='img' alt="">
             </a>
             <h5 class="sk_goods_title">${good.title}</h5>
             <p class="sk_goods_price">

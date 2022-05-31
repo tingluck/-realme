@@ -66,3 +66,6 @@ $('.admin ul').onmouseleave = function () {
 $('.admin ul li:last-child').onclick = function () {
     location.assign('./login.html')
 }
+$('.admin ul li:first-child').onclick = function () {
+    location.assign('./goodsCar.html')
+}
