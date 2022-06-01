@@ -29,7 +29,7 @@ class Index {
               <span class="cart-amount">${data.info.current_price}</span>
             </div>
           </li>`;
-            console.log(html);
+            // console.log(html);
             this.$('.car-ul').innerHTML += html;
             this.$('.admin').onmouseover = () => {
                 this.$('.car-ul').style.display = 'block';
@@ -90,7 +90,7 @@ class Index {
             data,
             status
         }) => {
-            // console.log(data,status);
+            console.log(data,status);
             // 判断添加购物车是否成功
             if (status == 200 && data.code == 1) {
                 layer.open({
@@ -102,11 +102,11 @@ class Index {
                         location.assign('./goodsCar.html')
                     }
                 })
-            } else if (status == 200 && data.code == 401) {
+            } else if (status == 200 && data.code == 401||data.code==0) {
                 localStorage.removeItem('token'),
                     localStorage.removeItem('user_id');
                 location.assign('./login.html?ReturnUrl=./list.html')
-            } else {
+            }else {
                 layer.open({
                     title: '失败',
                     content: '搞啥尼',

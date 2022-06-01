@@ -69,3 +69,4 @@ $('.admin ul li:last-child').onclick = function () {
 $('.admin ul li:first-child').onclick = function () {
     location.assign('./goodsCar.html')
 }
+
