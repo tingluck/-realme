@@ -3,7 +3,11 @@ class Index {
         this.getDate();
         this.bindEve();
         // 显示购物车
-        // this.click();
+        this.click();
+        // 默认页
+        this.currentPage = 1;
+        // // 试用锁
+        this.lock = false;
 
     }
     // 显示
@@ -36,11 +40,15 @@ class Index {
         })
 
     }
-    // 消失
+
 
     // 加入购物车
     bindEve() {
-        this.$('.sk_bd ul').addEventListener('click', this.checkLogin.bind(this))
+        this.$('.sk_bd ul').addEventListener('click', this.checkLogin.bind(this));
+        // 懒加载
+        window.addEventListener('scroll', this.lazyLoad);
+        // 分页
+        // this.$('.sk_page').addEventListener('click', this.fen);
     }
 
     checkLogin(eve) {
@@ -108,20 +116,15 @@ class Index {
 
         })
     }
-    // 显示购物车内容
-    // xianShi(eve){
 
-
-
-    // }
     // 获取商品
-    async getDate() {
+    async getDate(page = 1) {
         // console.log(111);
         // 发送请求
         let {
             status,
             data
-        } = await axios.get('http://localhost:8888/goods/list');
+        } = await axios.get('http://localhost:8888/goods/list?current=' + page);
         // console.log(data);
         // console.log(status, data);
         if (status != 200 || data.code != 1) throw new Error('不可空');
@@ -154,6 +157,52 @@ class Index {
         this.$('.sk_bd ul').innerHTML += html;
     }
 
+    // 当前需要的高度=滚动条的高度+可视区的高度   滚进去的顶上没用的内容，不相关的
+    // 滚动条到达底部就要获取新的数据   当前需要的高度<滚动条的高度+可视区的高度
+    lazyLoad = () => {
+        // 需要滚动条高度，可视区高度，实际内容的高度
+        let Top = document.documentElement.scrollTop;
+        // console.log(Top);
+        let clit = document.documentElement.clientHeight;
+        // console.log(clit);
+        let conH = this.$('.sk_container').offsetHeight;
+        // console.log(conH);
+        if (Top + clit > (conH + 85)) {
+            // console.log(111);
+            // 一直触发 要用节流防抖
+            if (this.lock) return;
+            this.lock = true;
+            // 指定时间开锁
+            setTimeout(() => {
+                this.lock = false;
+            }, 1000)
+            this.getDate(++this.currentPage);
+        }
+    }
+
+    // 分页
+    // fen = (eve) => {
+    //     let aj = eve.target.innerHTML;
+    //     if (eve.target.className != 'pn-prev' && eve.target.className != 'pn-prev') {
+    //         this.ye = aj * this.currentPage;
+    //         this.$('.sk_bd ul').innerHTML = '';
+    //         this.getDate(this.ye);
+
+    //     } else if (eve.target.className == 'pn-prev') {
+    //         // let aj = eve.target.innerHTML;
+    //         // console.log(aj);
+    //         this.ye--;
+    //         this.$('.sk_bd ul').innerHTML = '';
+    //         this.getDate(this.ye);
+    //     } else if (eve.target.className == 'pn-next') {
+    //         // let aj = eve.target.innerHTML;
+    //         // console.log(aj);
+    //         this.ye++;
+    //         this.$('.sk_bd ul').innerHTML = '';
+    //         this.getDate(this.ye);
+    //     }
+    //     // console.log(ye);
+    // }
 
     // 获取节点
     $(ele) {
